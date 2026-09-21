@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">MyStore</h1>
+
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+            <div class="cart">
+                🛒 Cart: <span id="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <h2>Welcome to My Store</h2>
+            <p>Find something you love.</p>
+            <button>Shop Now</button>
+        </section>
+
+        <section id="products" class="products-section">
+            <h2>Our Products</h2>
+
+            <div class="product-grid">
+
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Product 1">
+                    <h3>Product One</h3>
+                    <p>€19.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Product 2">
+                    <h3>Product Two</h3>
+                    <p>€29.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Product 3">
+                    <h3>Product Three</h3>
+                    <p>€39.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MyStore</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
