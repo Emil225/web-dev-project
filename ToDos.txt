@@ -2,3 +2,6 @@ Justin:
 FRONTEND
 - Build Login Frontend (With Private Areas like saved ordes)
 - Build Dummy Dummy shopping cart
+- Advanced Search and Filter Page (Public Area)
+- Athlete Dashboard (Private Area) --> Required UI Elements:An HTML form where the user can read, update, and delete their profile information.   A section (e.g., "My Gear" or "Wishlist") where added or purchased items are listed. 
+- Placeholder UI for the REST API --> mabye something external when the next Ironmen races gonna be
