@@ -1,0 +1,4 @@
+Justin:
+FRONTEND
+- Build Login Frontend (With Private Areas like saved ordes)
+- Build Dummy Dummy shopping cart
