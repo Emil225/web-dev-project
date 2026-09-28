@@ -80,10 +80,9 @@
 					<li class="nav-item"><a class="nav-link" href="#about-us">About us</a></li>
 				</ul>
 				<div class="d-flex align-items-center gap-3">
-					<div class="input-group d-none d-xl-flex" style="width: 190px;">
-						<span class="input-group-text bg-transparent border-secondary-subtle text-secondary"><i class="bi bi-search"></i></span>
-						<input class="form-control border-secondary-subtle bg-transparent" type="search" placeholder="Search" aria-label="Search products">
-					</div>
+					<button class="btn btn-link nav-link p-0 fs-5" type="button" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Search products">
+						<i class="bi bi-search" aria-hidden="true"></i>
+					</button>
 					<a class="nav-link" href="#loginModal" data-bs-toggle="modal" data-bs-target="#loginModal" aria-label="Profile"><i class="bi bi-person fs-5"></i></a>
 					<a class="nav-link position-relative" href="#cartOffcanvas" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas" aria-label="Shopping cart">
 						<i class="bi bi-bag fs-5"></i><span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-light">0</span>
@@ -259,6 +258,36 @@
 				<!-- Modal footer with registration link -->
 				<div class="modal-footer justify-content-center" style="border-top: 1px solid var(--line);">
 					<span class="small muted">Don't have an account? <a class="text-accent" href="#registration">Register now.</a></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Product search modal -->
+	<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content" style="background: var(--surface); border: 1px solid var(--line); color: #fff;">
+				<!-- Modal header with title and close button -->
+				<div class="modal-header" style="border-bottom: 1px solid var(--line);">
+					<h2 class="modal-title h5" id="searchModalLabel">Search Products</h2>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+
+				<!-- Search field, submit button, and quick suggestions -->
+				<div class="modal-body">
+					<form role="search">
+						<label class="visually-hidden" for="productSearch">Search products</label>
+						<input class="form-control form-control-lg" id="productSearch" name="q" type="search" placeholder="Type to search gear, nutrition..." autofocus>
+						<button class="btn btn-accent w-100 mt-3" type="submit">Search</button>
+					</form>
+					<div class="mt-4">
+						<p class="small muted mb-2">Quick Suggestions</p>
+						<div class="d-flex flex-wrap gap-2">
+							<a class="badge badge-soft text-decoration-none" href="#products">Tri-Suits</a>
+							<a class="badge badge-soft text-decoration-none" href="#products">Aero Helmet</a>
+							<a class="badge badge-soft text-decoration-none" href="#products">Fuel Gels</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
