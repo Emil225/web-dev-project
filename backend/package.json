@@ -1,13 +1,19 @@
 {
-  "name": "backend",
+  "name": "iron-prep-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Backend for the IRON-PREP storefront",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "triathlon",
+    "shop",
+    "express"
+  ],
+  "author": "IRON-PREP",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
