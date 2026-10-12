@@ -45,6 +45,102 @@ app.get("/api/products", (req, res) => {
     });
 });
 
+app.post("/api/products", (req, res) => {
+    const { name, price } = req.body;
+
+    // Check if the product name is missing
+    if (!name || typeof name !== "string" || !name.trim()) {
+        return res.status(400).json({
+            success: false,
+            error: "Product name is required",
+        });
+    }
+
+    // Check if the price is valid
+    if (price === undefined || typeof price !== "number" || !Number.isFinite(price) || price <= 0) {
+        return res.status(400).json({
+            success: false,
+            error: "A valid positive price is required",
+        });
+    }
+
+    const newProduct = {
+        id: products.length + 1,
+        name: name.trim(),
+        price: price,
+    };
+
+    products.push(newProduct);
+
+    res.status(201).json({
+        success: true,
+        product: newProduct,
+    });
+});
+
+app.put("/api/products/:id", (req, res) => {
+    const productId = Number(req.params.id);
+
+    const product = products.find(p => p.id === productId);
+
+    if (!product) {
+        return res.status(404).json({
+            success: false,
+            error: "Product not found",
+        });
+    }
+
+    const { name, price } = req.body;
+
+    if (name !== undefined) {
+        if (typeof name !== "string" || !name.trim()) {
+            return res.status(400).json({
+                success: false,
+                error: "Product name cannot be empty",
+            });
+        }
+
+        product.name = name.trim();
+    }
+
+    if (price !== undefined) {
+        if (typeof price !== "number" || !Number.isFinite(price) || price <= 0) {
+            return res.status(400).json({
+                success: false,
+                error: "A valid positive price is required",
+            });
+        }
+
+        product.price = price;
+    }
+
+    res.json({
+        success: true,
+        product: product,
+    });
+});
+
+app.delete("/api/products/:id", (req, res) => {
+    const productId = Number(req.params.id);
+
+    const productIndex = products.findIndex(p => p.id === productId);
+
+    if (productIndex === -1) {
+        return res.status(404).json({
+            success: false,
+            error: "Product not found",
+        });
+    }
+
+    const deletedProduct = products.splice(productIndex, 1);
+
+    res.json({
+        success: true,
+        message: "Product deleted successfully",
+        product: deletedProduct[0],
+    });
+});
+
 app.get("/api/products/:id", (req, res) => {
     const productId = Number(req.params.id);
 
