@@ -1,15 +1,13 @@
 const express = require("express");
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const API_MESSAGE = "IRON-PREP backend is working";
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-    res.json({
-        success: true,
-        message: API_MESSAGE,
-        timestamp: new Date().toISOString(),
-    });
+    res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
 app.get("/health", (req, res) => {
