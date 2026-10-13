@@ -5,3 +5,7 @@ FRONTEND
 - Advanced Search and Filter Page (Public Area) --> finished
 - Athlete Dashboard (Private Area) --> Required UI Elements:An HTML form where the user can read, update, and delete their profile information.   A section (e.g., "My Gear" or "Wishlist") where added or purchased items are listed. 
 - Placeholder UI for the REST API --> mabye something external when the next Ironmen races gonna be, thinking about weather API
+
+Emil:
+BACKEND
+- Do all the Database stuff
