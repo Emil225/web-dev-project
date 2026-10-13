@@ -18,7 +18,7 @@ const updateCartCount = (nextCount) => {
 
 const handleAddToCart = (button) => {
     const productCard = button.closest(".product-card");
-    const productTitle = productCard?.querySelector("h3")?.textContent?.trim() || "Product";
+    const productTitle = productCard?.querySelector("h2, h3")?.textContent?.trim() || "Product";
 
     updateCartCount(cartItemCount + 1);
 

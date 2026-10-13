@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
+const catalogRoutes = require("./routes/catalogRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,6 +23,7 @@ app.get("/health", (req, res) => {
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
+app.use("/products", catalogRoutes);
 
 app.post("/test", (req, res) => {
     res.json({
