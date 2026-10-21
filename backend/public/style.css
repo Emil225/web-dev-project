@@ -122,6 +122,52 @@ select:focus-visible {
     font-weight: 750;
 }
 
+.weather-widget:empty {
+    display: none;
+}
+
+.weather-widget:not(:empty) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+    gap: 1rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.weather-heading {
+    grid-column: 1 / -1;
+    margin: 0 0 0.25rem;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+}
+
+.weather-card {
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(217, 255, 79, 0.45);
+    border-radius: 1rem;
+    background: linear-gradient(135deg, rgba(217, 255, 79, 0.14), var(--surface) 72%);
+    box-shadow: 0 0.75rem 1.75rem rgba(0, 0, 0, 0.2);
+}
+
+.weather-location {
+    margin: 0 0 0.65rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.weather-temperature {
+    margin: 0;
+    color: var(--accent);
+    font-size: clamp(2rem, 5vw, 2.7rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
 .muted {
     color: var(--muted);
 }
