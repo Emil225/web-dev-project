@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	// Dome: makes the page fit the phone screen instead of showing a tiny desktop page
+	<!-- Demo: makes the page fit the phone screen instead of showing a tiny desktop page -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="IRON-PREP: Essential gear and tools for your Ironman preparation.">
 	<title>IRON-PREP | Ready for the long distance</title>
 
-	//Demo: Loads Bootstrap CSS
+	<!-- Demo: loads Bootstrap CSS (mobile-first grid, cards and navbar) -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-	//Demo: keeps the menu compact on small screens
+	<!-- Demo: burger menu - navbar-expand-lg collapses the links behind the toggle button on small screens -->
 	<nav class="navbar navbar-expand-lg sticky-top" data-bs-theme="dark">
 		<div class="container py-2"> 
 			<a class="navbar-brand" href="#top">IRON<span>-PREP</span></a>
@@ -60,7 +60,7 @@
 
 		<!-- Trust / Value Proposition -->
 		<section class="section-space border-bottom border-secondary-subtle" id="about-us">
-			// Demo: stacks the items on phones and places them in culumns
+			<!-- Demo: stacks the items on phones and places them in columns (col-md-4) -->
 			<div class="container"> 
 				<div class="row g-4">
 					<div class="col-md-4 trust-item">
@@ -89,29 +89,29 @@
 					<div><p class="eyebrow mb-3">The essentials</p><h2 class="section-heading mb-0">Essential preparation.</h2></div>
 					<a href="/products" class="link-light text-decoration-none">All products <i class="bi bi-arrow-up-right"></i></a>
 				</div>
-				// Demo: On small phones the products will appear one below other
+				<!-- Demo: cards stack one per row on phones, 2 per row from 576px (col-sm-6), 4 per row from 1200px (col-xl-3) -->
 				<div class="row g-4">
 					<div class="col-sm-6 col-xl-3">
 						<article class="product-card d-flex flex-column">
-							<img class="product-image w-100" src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80" alt="Black triathlon suit during run training" loading="lazy">
+							<img class="product-image w-100" src="https://images.unsplash.com/photo-1782145373397-19130f8a3114?auto=format&fit=crop&w=800&q=80" alt="Triathlete in a black tri-suit running on a trail during a race" loading="lazy">
 							<div class="p-4 d-flex flex-column flex-grow-1"><span class="badge badge-soft align-self-start mb-3">Bestseller</span><h3>Endurance Tri-Suit</h3><p class="muted small flex-grow-1">Seamless comfort and an aerodynamic fit for all three disciplines.</p><div class="d-flex justify-content-between align-items-center mt-3"><span class="price">189,00 €</span><button class="btn btn-accent btn-sm add-to-cart" type="button">Add to cart</button></div></div>
 						</article>
 					</div>
 					<div class="col-sm-6 col-xl-3">
 						<article class="product-card d-flex flex-column">
-							<img class="product-image w-100" src="https://images.unsplash.com/photo-1502744688674-c619d1586c9e?auto=format&fit=crop&w=800&q=80" alt="Aerodynamic bike helmet on a racing bike" loading="lazy">
+							<img class="product-image w-100" src="https://images.unsplash.com/photo-1749174899667-4553e4f248e2?auto=format&fit=crop&w=800&q=80" alt="Triathlete wearing an aero helmet in the aero position on a race bike" loading="lazy">
 							<div class="p-4 d-flex flex-column flex-grow-1"><span class="badge badge-soft align-self-start mb-3">Aero</span><h3>Flow Aero Helmet</h3><p class="muted small flex-grow-1">Lightweight race helmet with efficient ventilation and a fast silhouette.</p><div class="d-flex justify-content-between align-items-center mt-3"><span class="price">249,00 €</span><button class="btn btn-accent btn-sm add-to-cart" type="button">Add to cart</button></div></div>
 						</article>
 					</div>
 					<div class="col-sm-6 col-xl-3">
 						<article class="product-card d-flex flex-column">
-							<img class="product-image w-100" src="https://images.unsplash.com/photo-1594882645126-14020914d58d?auto=format&fit=crop&w=800&q=80" alt="Athlete with a water bottle during training" loading="lazy">
+							<img class="product-image w-100" src="https://images.unsplash.com/photo-1571623451679-a46085b4c4de?auto=format&fit=crop&w=800&q=80" alt="Hand holding two energy gel sachets on a trail" loading="lazy">
 							<div class="p-4 d-flex flex-column flex-grow-1"><span class="badge badge-soft align-self-start mb-3">Nutrition</span><h3>Race Fuel Gel Pack</h3><p class="muted small flex-grow-1">12 gels with balanced carbohydrates for consistent energy.</p><div class="d-flex justify-content-between align-items-center mt-3"><span class="price">32,90 €</span><button class="btn btn-accent btn-sm add-to-cart" type="button">Add to cart</button></div></div>
 						</article>
 					</div>
 					<div class="col-sm-6 col-xl-3">
 						<article class="product-card d-flex flex-column">
-							<img class="product-image w-100" src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?auto=format&fit=crop&w=800&q=80" alt="Road bike for race preparation" loading="lazy">
+							<img class="product-image w-100" src="https://images.unsplash.com/photo-1782655478713-5e3ecc22992a?auto=format&fit=crop&w=800&q=80" alt="GPS bike computer mounted on road bike handlebars" loading="lazy">
 							<div class="p-4 d-flex flex-column flex-grow-1"><span class="badge badge-soft align-self-start mb-3">Training</span><h3>Power Data Kit</h3><p class="muted small flex-grow-1">Accessories for reliable power data and smarter training zones.</p><div class="d-flex justify-content-between align-items-center mt-3"><span class="price">79,00 €</span><button class="btn btn-accent btn-sm add-to-cart" type="button">Add to cart</button></div></div>
 						</article>
 					</div>
@@ -147,7 +147,7 @@
 		<div class="offcanvas-body d-flex flex-column">
 			<div>
 				<div class="d-flex align-items-center gap-3 mb-4">
-					<img class="rounded cart-item-image" src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=150&q=80" alt="Endurance Tri-Suit">
+					<img class="rounded cart-item-image" src="https://images.unsplash.com/photo-1782145373397-19130f8a3114?auto=format&fit=crop&w=150&q=80" alt="Endurance Tri-Suit">
 					<div class="flex-grow-1">
 						<h3 class="h6 mb-1">Endurance Tri-Suit</h3>
 						<p class="small muted mb-1">Size: M</p>
@@ -157,7 +157,7 @@
 				</div>
 
 				<div class="d-flex align-items-center gap-3 mb-4">
-					<img class="rounded cart-item-image" src="https://images.unsplash.com/photo-1502744688674-c619d1586c9e?auto=format&fit=crop&w=150&q=80" alt="Flow Aero Helmet">
+					<img class="rounded cart-item-image" src="https://images.unsplash.com/photo-1749174899667-4553e4f248e2?auto=format&fit=crop&w=150&q=80" alt="Flow Aero Helmet">
 					<div class="flex-grow-1">
 						<h3 class="h6 mb-1">Flow Aero Helmet</h3>
 						<p class="small muted mb-1">Color: Black</p>

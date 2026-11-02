@@ -1,1 +1,17 @@
 hey emil
+
+Backend Setup
+Completed
+Installed and verified Node.js and npm.
+Created a backend folder for the server-side part of the project.
+Initialised the backend as a Node.js project using npm init -y.
+Installed Express.js.
+Created a server.js file.
+Created a basic Express server running on port 3000.
+Added a test route to confirm that the backend is working.
+Tested the server locally using http://localhost:3000.
+Current Status
+
+The Node.js and Express backend is successfully running locally and can respond to requests from the browser.
+
+commit 27.09.2026
