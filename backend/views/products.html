@@ -17,6 +17,7 @@
 			<div class="d-flex align-items-center gap-3">
 				<a class="nav-link" href="/">Home</a>
 				<a class="nav-link" href="/#contact">Contact</a>
+				<a class="nav-link" href="/products/manage">Manage</a>
 			</div>
 		</div>
 	</nav>
@@ -28,74 +29,9 @@
 				<h1 class="section-heading">All products</h1>
 				<p class="muted mb-5">Explore the essentials for every discipline and every stage of your race preparation.</p>
 
-				<div class="row g-4">
-					<div class="col-sm-6 col-xl-4">
-						<article class="product-card d-flex flex-column">
-							<img class="product-image w-100" src="https://images.unsplash.com/photo-1782145373397-19130f8a3114?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Triathlete in a black tri-suit running on a trail during a race" loading="lazy">
-							<div class="p-4 d-flex flex-column flex-grow-1">
-								<span class="badge badge-soft align-self-start mb-3">Triathlon</span>
-								<h2 class="h3">Endurance Tri-Suit</h2>
-								<p class="muted small flex-grow-1">Seamless comfort and an aerodynamic fit for all three disciplines.</p>
-								<div class="d-flex justify-content-between align-items-center mt-3"><span class="price">189,00 €</span><button class="btn btn-accent btn-sm add-to-cart" type="button">Add to cart</button></div>
-							</div>
-						</article>
-					</div>
-					<div class="col-sm-6 col-xl-4">
-						<article class="product-card d-flex flex-column">
-							<img class="product-image w-100" src="https://images.unsplash.com/photo-1749174899667-4553e4f248e2?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Triathlete wearing an aero helmet in the aero position on a race bike" loading="lazy">
-							<div class="p-4 d-flex flex-column flex-grow-1">
-								<span class="badge badge-soft align-self-start mb-3">Cycling</span>
-								<h2 class="h3">Flow Aero Helmet</h2>
-								<p class="muted small flex-grow-1">A lightweight race helmet designed for ventilation and speed.</p>
-								<div class="d-flex justify-content-between align-items-center mt-3"><span class="price">249,00 €</span><button class="btn btn-accent btn-sm add-to-cart" type="button">Add to cart</button></div>
-							</div>
-						</article>
-					</div>
-					<div class="col-sm-6 col-xl-4">
-						<article class="product-card d-flex flex-column">
-							<img class="product-image w-100" src="https://images.unsplash.com/photo-1571623451679-a46085b4c4de?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Hand holding two energy gel sachets on a trail" loading="lazy">
-							<div class="p-4 d-flex flex-column flex-grow-1">
-								<span class="badge badge-soft align-self-start mb-3">Nutrition</span>
-								<h2 class="h3">Race Fuel Gel Pack</h2>
-								<p class="muted small flex-grow-1">A 12-pack of carbohydrate gels for consistent energy on race day.</p>
-								<div class="d-flex justify-content-between align-items-center mt-3"><span class="price">32,90 €</span><button class="btn btn-accent btn-sm add-to-cart" type="button">Add to cart</button></div>
-							</div>
-						</article>
-					</div>
-					<div class="col-sm-6 col-xl-4">
-						<article class="product-card d-flex flex-column">
-							<img class="product-image w-100" src="https://images.unsplash.com/photo-1782655478713-5e3ecc22992a?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="GPS bike computer mounted on road bike handlebars" loading="lazy">
-							<div class="p-4 d-flex flex-column flex-grow-1">
-								<span class="badge badge-soft align-self-start mb-3">Training</span>
-								<h2 class="h3">Power Data Kit</h2>
-								<p class="muted small flex-grow-1">Training accessories to help monitor power and pace your sessions.</p>
-								<div class="d-flex justify-content-between align-items-center mt-3"><span class="price">79,00 €</span><button class="btn btn-accent btn-sm add-to-cart" type="button">Add to cart</button></div>
-							</div>
-						</article>
-					</div>
-					<div class="col-sm-6 col-xl-4">
-						<article class="product-card d-flex flex-column">
-							<img class="product-image w-100" src="https://images.unsplash.com/photo-1533060629428-48484ce98a74?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Black swimming goggles on a dock beside open water at sunset" loading="lazy">
-							<div class="p-4 d-flex flex-column flex-grow-1">
-								<span class="badge badge-soft align-self-start mb-3">Swimming</span>
-								<h2 class="h3">Open-Water Goggles</h2>
-								<p class="muted small flex-grow-1">Wide-vision lenses and a secure fit for swim training and race day.</p>
-								<div class="d-flex justify-content-between align-items-center mt-3"><span class="price">35,00 €</span><button class="btn btn-accent btn-sm add-to-cart" type="button">Add to cart</button></div>
-							</div>
-						</article>
-					</div>
-					<div class="col-sm-6 col-xl-4">
-						<article class="product-card d-flex flex-column">
-							<img class="product-image w-100" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Runner in cushioned running shoes climbing stone steps" loading="lazy">
-							<div class="p-4 d-flex flex-column flex-grow-1">
-								<span class="badge badge-soft align-self-start mb-3">Running</span>
-								<h2 class="h3">Distance Running Shoes</h2>
-								<p class="muted small flex-grow-1">Cushioned daily trainers made for steady mileage and long runs.</p>
-								<div class="d-flex justify-content-between align-items-center mt-3"><span class="price">139,00 €</span><button class="btn btn-accent btn-sm add-to-cart" type="button">Add to cart</button></div>
-							</div>
-						</article>
-					</div>
-				</div>
+				<!-- Demo: READ - these products are loaded from the database (GET /api/products) by script.js -->
+				<p class="muted" id="productGridStatus" role="status" aria-live="polite">Loading products from the database...</p>
+				<div class="row g-4" id="productGrid"></div>
 
 				<p id="cart-status" class="cart-status mt-4" aria-live="polite"></p>
 			</div>

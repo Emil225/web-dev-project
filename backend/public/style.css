@@ -327,6 +327,84 @@ footer a:hover {
     border-top: 1px solid var(--line);
 }
 
+/* Manage products page (mobile-first: the row is image + text, with price and buttons underneath) */
+.manage-form {
+    scroll-margin-top: 90px; /* stops the sticky menu bar covering the form title after "Edit" scrolls to it */
+}
+
+.manage-form.is-editing {
+    border-color: var(--accent);
+}
+
+.manage-search {
+    width: 100%;
+    padding: 0.55rem 0.9rem;
+}
+
+.manage-row {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 0.75rem 1rem;
+    align-items: center;
+    padding: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.manage-row.is-highlighted {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem rgba(217, 255, 79, 0.15);
+}
+
+.manage-thumb {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+}
+
+.manage-thumb-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-light);
+    color: var(--muted);
+    font-size: 1.4rem;
+}
+
+.manage-id {
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.manage-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.manage-footer {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.manage-toast {
+    background: var(--surface-light);
+    border: 1px solid var(--accent);
+    color: #fff;
+}
+
+.manage-toast.is-error {
+    border-color: #ff6b6b;
+}
+
 /* Tablets and up (768px+, Bootstrap's "md" breakpoint): items sit side by side, so the dividers move to the right */
 @media (min-width: 768px) {
     .hero {
@@ -346,5 +424,32 @@ footer a:hover {
 
     .section-space {
         padding: 110px 0;
+    }
+
+    .manage-search {
+        width: 260px;
+    }
+
+    .manage-row {
+        grid-template-columns: 72px 1fr auto;
+    }
+
+    .manage-thumb {
+        width: 72px;
+        height: 72px;
+    }
+
+    .manage-footer {
+        grid-column: auto;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+/* Large screens: keep the form in view while scrolling through a long product list */
+@media (min-width: 992px) {
+    .manage-form {
+        position: sticky;
+        top: 90px;
     }
 }

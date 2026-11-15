@@ -2,7 +2,7 @@
 
 A triathlon gear shop built with **Node.js + Express**, a **PostgreSQL** database and a Bootstrap frontend.
 
-- `backend/views/` – HTML pages (`index.html`, `products.html`)
+- `backend/views/` – HTML pages (`index.html`, `products.html`, `manage.html`)
 - `backend/public/` – CSS and browser JavaScript
 - `backend/server.js` – the Express server
 - `backend/routes/` → `controllers/` → `models/` – the REST API (MVC)
@@ -43,6 +43,8 @@ npm start        # or: npm run dev   (restarts automatically when you change a f
 Open http://localhost:3000. The terminal tells you whether the database connected. If it didn't, it says how to fix it.
 
 **Demo account:** `demo@iron-prep.test` / `IronPrep2026!`
+
+**Manage products:** http://localhost:3000/products/manage lets you add, edit and delete products. Every change goes through the REST API to PostgreSQL (`public/manage.js`).
 
 ## Database
 

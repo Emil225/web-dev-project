@@ -2,8 +2,9 @@ const CART_LIMIT = 99;
 
 const cartCounter = document.getElementById("cart-count");
 const cartStatus = document.getElementById("cart-status");
-const addToCartButtons = document.querySelectorAll(".add-to-cart");
 const forms = document.querySelectorAll("form");
+
+const priceFormatter = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" });
 
 let cartItemCount = 0;
 
@@ -143,8 +144,91 @@ const handleFormSubmit = (event) => {
     form.reset();
 };
 
-addToCartButtons.forEach((button) => {
-    button.addEventListener("click", () => handleAddToCart(button));
+// Builds one product card. textContent is used so product text from the database can never run as HTML.
+const createProductCard = (product) => {
+    const column = document.createElement("div");
+    column.className = "col-sm-6 col-xl-4";
+
+    const card = document.createElement("article");
+    card.className = "product-card d-flex flex-column h-100";
+
+    if (product.imageUrl) {
+        const image = document.createElement("img");
+        image.className = "product-image w-100";
+        image.src = product.imageUrl;
+        image.alt = product.name;
+        image.loading = "lazy";
+        card.append(image);
+    }
+
+    const body = document.createElement("div");
+    body.className = "p-4 d-flex flex-column flex-grow-1";
+
+    const category = document.createElement("span");
+    category.className = "badge badge-soft align-self-start mb-3";
+    category.textContent = product.category;
+
+    const name = document.createElement("h2");
+    name.className = "h3";
+    name.textContent = product.name;
+
+    const description = document.createElement("p");
+    description.className = "muted small flex-grow-1";
+    description.textContent = product.description;
+
+    const footer = document.createElement("div");
+    footer.className = "d-flex justify-content-between align-items-center mt-3";
+
+    const price = document.createElement("span");
+    price.className = "price";
+    price.textContent = priceFormatter.format(product.price);
+
+    const button = document.createElement("button");
+    button.className = "btn btn-accent btn-sm add-to-cart";
+    button.type = "button";
+    button.textContent = "Add to cart";
+
+    footer.append(price, button);
+    body.append(category, name, description, footer);
+    card.append(body);
+    column.append(card);
+    return column;
+};
+
+// READ: shows the products from the database on the shop page (GET /api/products)
+const loadProductGrid = async () => {
+    const grid = document.getElementById("productGrid");
+    const status = document.getElementById("productGridStatus");
+
+    if (!grid) {
+        return;
+    }
+
+    try {
+        const response = await fetch("/api/products");
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(data.error || `Status ${response.status}`);
+        }
+
+        grid.replaceChildren(...data.products.map(createProductCard));
+        status.textContent = data.products.length === 0 ? "No products in the shop yet." : "";
+        status.classList.toggle("d-none", data.products.length > 0);
+    } catch (error) {
+        console.error("Unable to load products:", error);
+        status.textContent = `Could not load products: ${error.message}`;
+        status.classList.add("text-danger");
+    }
+};
+
+// One listener for the whole page, so it also works for cards created after the page loaded
+document.addEventListener("click", (event) => {
+    const button = event.target.closest(".add-to-cart");
+
+    if (button) {
+        handleAddToCart(button);
+    }
 });
 
 forms.forEach((form) => {
@@ -152,3 +236,4 @@ forms.forEach((form) => {
 });
 
 window.addEventListener("DOMContentLoaded", fetchIronmanWeather);
+window.addEventListener("DOMContentLoaded", loadProductGrid);

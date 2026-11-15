@@ -6,6 +6,7 @@ const CATEGORY_MAX_LENGTH = 40;
 const DESCRIPTION_MAX_LENGTH = 1000;
 const IMAGE_URL_MAX_LENGTH = 500;
 const SEARCH_MAX_LENGTH = 100;
+const MAX_PRICE = 99999999.99; // largest value the NUMERIC(10,2) price column can hold
 
 // Checks the product fields in a request body.
 // With isPartial = true (used by PUT) every field is optional, otherwise name and price are required.
@@ -22,10 +23,13 @@ const validateProductFields = (body = {}, isPartial) => {
     }
 
     if (price !== undefined || !isPartial) {
-        if (!isValidPrice(price)) {
-            return { error: "A valid positive price is required" };
+        // Round to cents first, then check, so 0.001 (rounds to 0) or 99999999.999 (too big for the column) are rejected
+        const roundedPrice = isValidPrice(price) ? Math.round(price * 100) / 100 : NaN;
+
+        if (!(roundedPrice >= 0.01 && roundedPrice <= MAX_PRICE)) {
+            return { error: `Price must be between 0.01 and ${MAX_PRICE}` };
         }
-        values.price = Math.round(price * 100) / 100;
+        values.price = roundedPrice;
     }
 
     if (category !== undefined) {

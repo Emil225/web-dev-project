@@ -61,12 +61,6 @@ app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/products", catalogRoutes);
 
-app.post("/test", (req, res) => {
-    res.json({
-        receivedData: req.body,
-    });
-});
-
 app.use((req, res) => {
     res.status(404).json({
         success: false,
