@@ -405,6 +405,173 @@ footer a:hover {
     border-color: #ff6b6b;
 }
 
+.navbar-actions .nav-link {
+    white-space: nowrap;
+}
+
+.navbar .container {
+    position: relative;
+}
+
+.navbar-toggler {
+    margin-left: auto;
+}
+
+#mainNavigation {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1050;
+    width: min(320px, calc(100vw - 2rem));
+    margin-top: 0.25rem;
+    padding: 1rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 0.5rem;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.45);
+}
+
+#mainNavigation .navbar-nav {
+    width: 100%;
+    margin: 0 !important;
+    align-items: stretch;
+}
+
+#mainNavigation .navbar-nav .nav-link {
+    display: block;
+    width: 100%;
+    padding: 0.65rem 0;
+}
+
+#mainNavigation .navbar-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 0 !important;
+    padding-top: 0.25rem;
+}
+
+#mainNavigation .mobile-nav-action {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0.65rem 0;
+}
+
+.navbar-toggler {
+    border-color: var(--line);
+}
+
+.breadcrumb {
+    --bs-breadcrumb-divider-color: var(--muted);
+}
+
+.breadcrumb a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.product-detail-image {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.quantity-input {
+    width: 72px;
+    text-align: center;
+}
+
+.cart-row {
+    grid-template-columns: 72px 1fr;
+}
+
+.cart-detail-image {
+    width: 72px;
+    height: 72px;
+}
+
+.race-countdown {
+    margin-bottom: 2rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(217, 255, 79, 0.5);
+    border-radius: 0.75rem;
+    background: rgba(217, 255, 79, 0.12);
+    color: var(--accent);
+    font-size: clamp(1.35rem, 4vw, 2.25rem);
+    font-weight: 800;
+}
+
+.shared-toast,
+.manage-toast {
+    background: var(--surface-light);
+    border: 1px solid var(--accent);
+    color: #fff;
+}
+
+.shared-toast.is-error {
+    border-color: #ff6b6b;
+}
+
+.race-distance-pills .nav-link {
+    border: 1px solid var(--line);
+    color: var(--muted);
+    background: var(--surface);
+}
+
+.race-distance-pills .nav-link.active {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--ink);
+}
+
+.checklist-progress {
+    height: 1.15rem;
+    background: var(--surface-light);
+    border: 1px solid var(--line);
+}
+
+.checklist-progress .progress-bar {
+    background: var(--accent);
+    color: var(--ink);
+    font-weight: 800;
+}
+
+.checklist-card {
+    border-radius: 0.75rem;
+}
+
+.checklist-item {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.checklist-item:last-child {
+    border-bottom: 0;
+}
+
+.gear-match {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.45rem 0.55rem;
+    border: 1px solid rgba(217, 255, 79, 0.25);
+    border-radius: 0.5rem;
+    background: rgba(217, 255, 79, 0.06);
+}
+
+.gear-match-link {
+    min-width: 0;
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* Tablets and up (768px+, Bootstrap's "md" breakpoint): items sit side by side, so the dividers move to the right */
 @media (min-width: 768px) {
     .hero {

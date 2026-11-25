@@ -61,6 +61,18 @@ app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/products", catalogRoutes);
 
+app.get("/cart", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "cart.html"));
+});
+
+app.get("/profile", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "profile.html"));
+});
+
+app.get("/checklist", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "checklist.html"));
+});
+
 app.use((req, res) => {
     res.status(404).json({
         success: false,

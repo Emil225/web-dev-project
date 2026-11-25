@@ -91,7 +91,8 @@
 					<a href="/products" class="link-light text-decoration-none">All products <i class="bi bi-arrow-up-right"></i></a>
 				</div>
 				<!-- Demo: cards stack one per row on phones, 2 per row from 576px (col-sm-6), 4 per row from 1200px (col-xl-3) -->
-				<div class="row g-4">
+				<p class="muted" id="productGridStatus" role="status" aria-live="polite">Loading products from the database...</p>
+				<div class="row g-4" id="productGrid">
 					<div class="col-sm-6 col-xl-3">
 						<article class="product-card d-flex flex-column">
 							<img class="product-image w-100" src="https://images.unsplash.com/photo-1782145373397-19130f8a3114?auto=format&fit=crop&w=800&q=80" alt="Triathlete in a black tri-suit running on a trail during a race" loading="lazy">
@@ -178,6 +179,7 @@
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/shared.js"></script>
 	<script src="/script.js"></script>
 
 	<!-- Login and registration modal -->

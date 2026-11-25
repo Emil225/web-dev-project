@@ -98,8 +98,20 @@ const updateCartCount = (nextCount) => {
 const handleAddToCart = (button) => {
     const productCard = button.closest(".product-card");
     const productTitle = productCard?.querySelector("h2, h3")?.textContent?.trim() || "Product";
+    const productId = Number(productCard?.dataset.productId);
 
-    updateCartCount(cartItemCount + 1);
+    if (productId && window.IRONPREP) {
+        window.IRONPREP.addToCart({
+            id: productId,
+            name: productTitle,
+            price: Number(productCard.dataset.price),
+            imageUrl: productCard.dataset.image,
+            category: productCard.dataset.category,
+        }, 1);
+        window.IRONPREP.showToast(`${productTitle} added to cart.`);
+    } else {
+        updateCartCount(cartItemCount + 1);
+    }
 
     if (cartStatus) {
         cartStatus.textContent = `${productTitle} added to cart.`;
@@ -151,6 +163,10 @@ const createProductCard = (product) => {
 
     const card = document.createElement("article");
     card.className = "product-card d-flex flex-column h-100";
+    card.dataset.productId = product.id;
+    card.dataset.price = product.price;
+    card.dataset.image = product.imageUrl || "";
+    card.dataset.category = product.category || "General";
 
     if (product.imageUrl) {
         const image = document.createElement("img");
@@ -158,7 +174,10 @@ const createProductCard = (product) => {
         image.src = product.imageUrl;
         image.alt = product.name;
         image.loading = "lazy";
-        card.append(image);
+        const imageLink = document.createElement("a");
+        imageLink.href = `/products/${product.id}`;
+        imageLink.append(image);
+        card.append(imageLink);
     }
 
     const body = document.createElement("div");
@@ -170,7 +189,11 @@ const createProductCard = (product) => {
 
     const name = document.createElement("h2");
     name.className = "h3";
-    name.textContent = product.name;
+    const nameLink = document.createElement("a");
+    nameLink.href = `/products/${product.id}`;
+    nameLink.className = "text-decoration-none text-light";
+    nameLink.textContent = product.name;
+    name.append(nameLink);
 
     const description = document.createElement("p");
     description.className = "muted small flex-grow-1";
@@ -213,12 +236,16 @@ const loadProductGrid = async () => {
         }
 
         grid.replaceChildren(...data.products.map(createProductCard));
-        status.textContent = data.products.length === 0 ? "No products in the shop yet." : "";
-        status.classList.toggle("d-none", data.products.length > 0);
+        if (status) {
+            status.textContent = data.products.length === 0 ? "No products in the shop yet." : "";
+            status.classList.toggle("d-none", data.products.length > 0);
+        }
     } catch (error) {
         console.error("Unable to load products:", error);
-        status.textContent = `Could not load products: ${error.message}`;
-        status.classList.add("text-danger");
+        if (status) {
+            status.textContent = `Could not load products: ${error.message}`;
+            status.classList.add("text-danger");
+        }
     }
 };
 

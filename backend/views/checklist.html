@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Interactive IRON-PREP race-day packing checklist">
+    <title>Race Checklist | IRON-PREP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar sticky-top" data-bs-theme="dark"><div class="container py-2"><a class="navbar-brand" href="/">IRON<span>-PREP</span></a></div></nav>
+    <main>
+        <section class="section-space">
+            <div class="container">
+                <p class="eyebrow mb-3">Race preparation</p>
+                <h1 class="section-heading mb-4">Race-Day Checklist</h1>
+
+                <ul class="nav nav-pills race-distance-pills flex-wrap gap-2 mb-4" id="distanceTabs" role="tablist" aria-label="Race distance">
+                    <li class="nav-item" role="presentation"><button class="nav-link active" type="button" role="tab" data-distance="sprint" aria-selected="true">Sprint</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" type="button" role="tab" data-distance="olympic" aria-selected="false">Olympic</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" type="button" role="tab" data-distance="70.3" aria-selected="false">70.3 (Half Ironman)</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" type="button" role="tab" data-distance="140.6" aria-selected="false">Full Ironman (140.6)</button></li>
+                </ul>
+
+                <div class="mb-5">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <strong id="progressLabel">0 of 0 items packed</strong>
+                        <button id="resetChecklist" class="btn btn-outline-light btn-sm" type="button">Reset Checklist</button>
+                    </div>
+                    <div class="progress checklist-progress" role="progressbar" aria-label="Race readiness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div id="checklistProgress" class="progress-bar"></div>
+                    </div>
+                </div>
+
+                <div id="catalogStatus" class="alert alert-secondary d-none" role="status" aria-live="polite"></div>
+                <div id="checklistGrid" class="row g-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/shared.js"></script>
+    <script src="/checklist.js"></script>
+</body>
+</html>
