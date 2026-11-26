@@ -8,6 +8,7 @@ require("dotenv").config({ path: path.join(__dirname, "..", ".env"), quiet: true
 const fs = require("fs");
 const { Client } = require("pg");
 const { DB_CONFIG, getDatabaseHint } = require("../config/db");
+const { runMigrations } = require("./migrate");
 
 const SCHEMA_FILE = path.join(__dirname, "schema.sql");
 const SEED_FILE = path.join(__dirname, "seed.sql");
@@ -53,6 +54,7 @@ const setupDatabase = async () => {
     try {
         await createDatabaseIfMissing();
         await runSqlFiles();
+        await runMigrations();
         console.log("Database setup complete. Start the server with: npm start");
     } catch (error) {
         console.error("Database setup failed:", getDatabaseHint(error) || error.message);

@@ -2,7 +2,7 @@
 -- WARNING: running this file deletes all tables and their data, then creates them again.
 -- Run it with: npm run db:setup   (that also loads the sample data from seed.sql)
 
-DROP TABLE IF EXISTS order_items, orders, wishlist_items, users, products CASCADE;
+DROP TABLE IF EXISTS schema_migrations, order_items, orders, wishlist_items, users, products CASCADE;
 
 -- Products sold in the shop
 CREATE TABLE products (
@@ -24,6 +24,7 @@ CREATE TABLE users (
     email         VARCHAR(255) NOT NULL UNIQUE,
     password_hash TEXT         NOT NULL,
     target_race   VARCHAR(120),
+    is_admin      BOOLEAN      NOT NULL DEFAULT FALSE,
     created_at    TIMESTAMPTZ  NOT NULL DEFAULT NOW()
 );
 

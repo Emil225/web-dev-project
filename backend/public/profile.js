@@ -273,6 +273,17 @@ document.addEventListener("DOMContentLoaded", () => {
             if (raceDate) document.getElementById("raceDate").value = raceDate;
             document.getElementById("profileForm").addEventListener("submit", saveProfile);
             document.getElementById("raceDate").addEventListener("change", updateCountdown);
+            document.getElementById("logoutButton").addEventListener("click", async (event) => {
+                const button = event.currentTarget;
+                button.disabled = true;
+                try {
+                    await requestJson("/api/users/logout", { method: "POST" });
+                    window.location.reload();
+                } catch (error) {
+                    button.disabled = false;
+                    window.IRONPREP.showToast(error.message, true);
+                }
+            });
             updateCountdown();
             await Promise.all([loadWishlist(), loadOrders()]);
         } catch (error) {

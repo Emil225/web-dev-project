@@ -42,21 +42,21 @@ npm start        # or: npm run dev   (restarts automatically when you change a f
 
 Open http://localhost:3000. The terminal tells you whether the database connected. If it didn't, it says how to fix it.
 
-**Demo account:** `demo@iron-prep.test` / `IronPrep2026!`
+**Development demo administrator:** `demo@iron-prep.test` / `IronPrep2026!`. This seeded account is for local demos only; never use it in a deployed environment.
 
-**Manage products:** http://localhost:3000/products/manage lets you add, edit and delete products. Every change goes through the REST API to PostgreSQL (`public/manage.js`).
+**Manage products:** http://localhost:3000/products/manage lets administrators add, edit and delete products. New registrations are regular athlete accounts. Every change goes through the REST API to PostgreSQL (`public/manage.js`).
 
 ## Database
 
 | Table | What it stores |
 |---|---|
 | `products` | Shop products: name, category, description, price, image |
-| `users` | Athlete accounts: name, email, bcrypt password hash, target race |
+| `users` | Athlete accounts: name, email, bcrypt password hash, target race, admin flag |
 | `wishlist_items` | "My Gear": which products each athlete saved |
 | `orders` | Saved orders: who ordered and the total |
 | `order_items` | The products in each order, with the name and price at the time of the order |
 
-Deleting a user also deletes their wishlist and orders. See `backend/db/schema.sql` for the full definitions.
+Deleting a user also deletes their wishlist and orders. See `backend/db/schema.sql` for the full definitions. `npm run db:migrate` applies pending, tracked migrations without resetting existing data; `npm run db:setup` is destructive and rebuilds all tables.
 
 ## REST API
 
@@ -69,9 +69,9 @@ Every response is JSON: `{ "success": true, ... }` or `{ "success": false, "erro
 | GET | `/api/products` | `?search=gel&category=Nutrition&minPrice=10&maxPrice=50&sort=price_asc` | All filters optional. `sort`: `newest`, `price_asc`, `price_desc`, `name` |
 | GET | `/api/products/categories` | | List of category names |
 | GET | `/api/products/:id` | | One product |
-| POST | `/api/products` | `{ name, price, category?, description?, imageUrl? }` | Creates a product (201) |
-| PUT | `/api/products/:id` | any of the fields above | Changes only the fields you send |
-| DELETE | `/api/products/:id` | | Deletes a product |
+| POST | `/api/products` 🔒 Admin | `{ name, price, category?, description?, imageUrl? }` | Creates a product (201) |
+| PUT | `/api/products/:id` 🔒 Admin | any of the fields above | Changes only the fields you send |
+| DELETE | `/api/products/:id` 🔒 Admin | | Deletes a product |
 
 ### Accounts (login is remembered with a session cookie)
 
@@ -95,7 +95,16 @@ Every response is JSON: `{ "success": true, ... }` or `{ "success": false, "erro
 | GET | `/api/orders` 🔒 | | The logged-in athlete's orders with their items |
 | POST | `/api/orders` 🔒 | `{ items: [{ productId, quantity }] }` | Prices come from the database, not the browser |
 
-🔒 = needs login, otherwise the API answers `401 Please log in first`.
+🔒 = needs login, otherwise the API answers `401 Please log in first`. Admin-only routes answer `403 Administrator access required` to regular accounts. Product search and reads remain public.
+
+### Public and private access
+
+- Public: product search, categories and product details; account registration and login; public athlete profiles (without email).
+- Private to the signed-in account: profile, wishlist and order endpoints. These routes always use the user ID from the server session, not an ID supplied by the browser.
+- Admin-only: the `/products/manage` page and product create, update and delete API routes. The server checks the account's database role on every request; hiding the navigation link is only a UI convenience, not the security boundary.
+- Use **Log out** on the profile dashboard to end the session and switch accounts during a demo.
+
+For the live demo, first request `/api/users/me/wishlist` or `/api/orders` without logging in and show the `401` response. Then log in as the seeded development administrator to manage the catalog. Use an ordinary registered account to show that catalog write requests return `403`.
 
 ### Using the API from the frontend
 

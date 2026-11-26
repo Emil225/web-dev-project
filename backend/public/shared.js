@@ -144,7 +144,6 @@
         [
             ["Shop", "/products"],
             ["Race Checklist", "/checklist"],
-            ["Manage Products", "/products/manage"],
         ].forEach(([label, href]) => {
             const item = document.createElement("li");
             item.className = "nav-item";
@@ -155,6 +154,14 @@
             item.append(link);
             navList.append(item);
         });
+        const manageItem = document.createElement("li");
+        manageItem.className = "nav-item d-none";
+        const manageLink = document.createElement("a");
+        manageLink.className = "nav-link";
+        manageLink.href = "/products/manage";
+        manageLink.textContent = "Manage Products";
+        manageItem.append(manageLink);
+        navList.append(manageItem);
         collapse.append(navList);
 
         const actions = document.createElement("div");
@@ -176,10 +183,10 @@
         collapse.append(actions);
 
         updateCartBadge();
-        checkSession(profileLink);
+        checkSession(profileLink, manageItem);
     };
 
-    const checkSession = async (profileLink) => {
+    const checkSession = async (profileLink, manageItem) => {
         try {
             const response = await fetch("/api/users/me", { credentials: "same-origin" });
             const data = await response.json();
@@ -187,6 +194,9 @@
                 const name = data.user.name || "My Profile";
                 profileLink.textContent = name;
                 profileLink.setAttribute("aria-label", `Open profile for ${name}`);
+                if (data.user.isAdmin === true) {
+                    manageItem.classList.remove("d-none");
+                }
             } else {
                 profileLink.textContent = "Login";
             }

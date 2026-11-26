@@ -15,8 +15,8 @@ INSERT INTO products (name, category, description, price, image_url) VALUES
         'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=800&q=80');
 
 -- Demo account for testing the login. Email: demo@iron-prep.test   Password: IronPrep2026!
-INSERT INTO users (name, email, password_hash, target_race) VALUES
-    ('Demo Athlete', 'demo@iron-prep.test', '$2a$10$j8cZK/42UeaM3KfDmbGal.UkjL.KMMP8393.4mW7/9Lta.QwGLDUq', 'Ironman Lanzarote');
+INSERT INTO users (name, email, password_hash, target_race, is_admin) VALUES
+    ('Demo Athlete', 'demo@iron-prep.test', '$2a$10$j8cZK/42UeaM3KfDmbGal.UkjL.KMMP8393.4mW7/9Lta.QwGLDUq', 'Ironman Lanzarote', TRUE);
 
 -- The demo athlete has two products in "My Gear" ...
 INSERT INTO wishlist_items (user_id, product_id) VALUES

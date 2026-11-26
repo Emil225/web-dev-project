@@ -1,7 +1,7 @@
 const { pool } = require("../config/db");
 
 // Never include password_hash here: these columns are sent to the browser
-const USER_COLUMNS = `id, name, email, target_race AS "targetRace", created_at AS "createdAt"`;
+const USER_COLUMNS = `id, name, email, target_race AS "targetRace", is_admin AS "isAdmin", created_at AS "createdAt"`;
 
 // Fields other people may see (no email address)
 const PUBLIC_USER_COLUMNS = `id, name, target_race AS "targetRace", created_at AS "createdAt"`;
